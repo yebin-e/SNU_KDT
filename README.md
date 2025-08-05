@@ -1,10 +1,10 @@
 # SNU_KDT
 
-## Subtitle 
+## Subtitle
 
-'''py 
-import json 
+```python
+import json
 print('abc')
-'''
+```
 
-This is the repoistory for my snu_kdt
+This is the repository for my snu_kdt
