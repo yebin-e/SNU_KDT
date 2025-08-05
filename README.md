@@ -1,10 +1,36 @@
+
 # SNU_KDT
 
-## Subtitle
+## 프로젝트 개요 📁
+
+**SNU_KDT**는 *[프로젝트 목표 또는 설명]*을 위해 만들어진 프로젝트입니다.  
+이 저장소는 프로젝트의 목적과 주요 기능을 소개합니다.
+
+---
+
+## 🚀 주요 기능
+
+- 데이터 처리 및 분석
+- 인터랙티브 시각화
+- 예측 모델링 및 결과 제공
+
+---
+
+## 🔗 유용한 링크
+
+- [GitHub Repository](https://github.com/yourusername/SNU_KDT)
+- [Documentation](#documentation)
+
+---
+
+## 예시 코드
 
 ```python
 import json
+
 print('abc')
 ```
 
-This is the repository for my snu_kdt
+---
+
+&copy; 2025 **[YOUR NAME OR TEAM NAME]**
