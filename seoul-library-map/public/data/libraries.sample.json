@@ -1,0 +1,47 @@
+[
+  {
+    "id": "lib-1",
+    "name": "서울도서관",
+    "district": "중구",
+    "lat": 37.566953,
+    "lng": 126.977977,
+    "categories": [
+      { "name": "문학", "count": 32000 },
+      { "name": "역사", "count": 12000 },
+      { "name": "사회", "count": 18000 },
+      { "name": "과학", "count": 14000 },
+      { "name": "예술", "count": 8000 },
+      { "name": "기술", "count": 9000 }
+    ]
+  },
+  {
+    "id": "lib-2",
+    "name": "구로구립 개봉도서관",
+    "district": "구로구",
+    "lat": 37.494532,
+    "lng": 126.858939,
+    "categories": [
+      { "name": "문학", "count": 22000 },
+      { "name": "역사", "count": 7000 },
+      { "name": "사회", "count": 9500 },
+      { "name": "과학", "count": 6000 },
+      { "name": "예술", "count": 4000 },
+      { "name": "기술", "count": 5500 }
+    ]
+  },
+  {
+    "id": "lib-3",
+    "name": "관악구립 행운도서관",
+    "district": "관악구",
+    "lat": 37.477358,
+    "lng": 126.955857,
+    "categories": [
+      { "name": "문학", "count": 15000 },
+      { "name": "역사", "count": 5000 },
+      { "name": "사회", "count": 6200 },
+      { "name": "과학", "count": 4200 },
+      { "name": "예술", "count": 3000 },
+      { "name": "기술", "count": 3500 }
+    ]
+  }
+]
