@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import L, { GeoJSON, Path } from 'leaflet'
+import L, { GeoJSON, Path, type LatLngExpression } from 'leaflet'
 
 export type DistrictFeatureProperties = {
   name_2?: string // district name from source data
@@ -28,6 +28,7 @@ export function SeoulMap({ containerId, onLibrarySelect }: SeoulMapProps) {
       center: [37.5665, 126.9780],
       zoom: 11,
       zoomControl: false,
+      maxBoundsViscosity: 1.0,
     })
 
     L.control.zoom({ position: 'bottomright' }).addTo(map)
@@ -62,7 +63,44 @@ export function SeoulMap({ containerId, onLibrarySelect }: SeoulMapProps) {
           },
         })
         districtLayer.addTo(map)
-        map.fitBounds(districtLayer.getBounds(), { padding: [16, 16] })
+        const bounds = districtLayer.getBounds()
+        map.fitBounds(bounds, { padding: [16, 16] })
+        map.setMaxBounds(bounds.pad(0.05))
+
+        // Build a mask: world polygon with holes for each district outer ring
+        const worldRing: LatLngExpression[] = [
+          [85, -180],
+          [85, 180],
+          [-85, 180],
+          [-85, -180],
+        ]
+
+        const holes: LatLngExpression[][] = []
+        const features = (geo as any).features as Array<{ geometry: { type: string; coordinates: any } }>
+        features.forEach((f) => {
+          const g = f.geometry
+          if (!g) return
+          if (g.type === 'Polygon') {
+            const outer = (g.coordinates[0] as unknown) as number[][]
+            const holeLatLngs = outer.map((c) => [c[1], c[0]] as [number, number])
+            holes.push(holeLatLngs)
+          } else if (g.type === 'MultiPolygon') {
+            const polys = (g.coordinates as unknown) as number[][][][]
+            polys.forEach((poly) => {
+              const outer = poly[0] as number[][]
+              const holeLatLngs = outer.map((c) => [c[1], c[0]] as [number, number])
+              holes.push(holeLatLngs)
+            })
+          }
+        })
+
+        L.polygon([worldRing, ...holes], {
+          stroke: false,
+          fillColor: '#ffffff',
+          fillOpacity: 1,
+          interactive: false,
+          fillRule: 'evenodd',
+        }).addTo(map)
       })
       .catch(console.error)
 
